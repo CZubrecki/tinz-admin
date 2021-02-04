@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import MUIDataTable from "mui-datatables";
 import React from 'react';
 
-export default function HomeScreen(){
+export default function HomePage(){
     const classes = useStyles();
     const columns = [
         {

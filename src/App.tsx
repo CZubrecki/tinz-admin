@@ -1,10 +1,31 @@
 import React from 'react';
-import HomeScreen from './screens/HomeScreen';
+import { connect } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+import ProtectedRoute from './components/ProtectedRoute';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 
-function App() {
+const mapStateToProps = (state: any) => {
+  return { auth: state.auth };
+};
+
+export default connect(mapStateToProps)(function App() {
   return (
-    <HomeScreen/>
+    <Router>
+      <Switch>
+        <Route path="/login">
+            <LoginPage />
+        </Route>
+        <ProtectedRoute render={() => (
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+          </Switch>
+        )} />
+      </Switch>
+    </Router>
   );
-}
-
-export default App;
+});
