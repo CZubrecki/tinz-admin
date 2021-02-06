@@ -1,9 +1,27 @@
-import { makeStyles } from '@material-ui/core';
 import MUIDataTable from "mui-datatables";
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { fetchBeers } from "../redux/beers";
+import { StoreState } from "../redux/store";
 
-export default function HomePage(){
-    const classes = useStyles();
+const mapStateToProps = (state: StoreState) => ({
+  auth: state.auth,
+  beer: state.beer,
+});
+
+export default connect(mapStateToProps)(function HomePage(props: any){
+  const dispatch = useDispatch();
+  const {auth, beer} = props;
+
+  const loadBeer = async () => {
+    const result = await fetchBeers(auth.token);
+    dispatch(result);
+  }
+  
+  useEffect(() => {
+      loadBeer();
+  }, []);
+
     const columns = [
         {
          name: "name",
@@ -14,53 +32,42 @@ export default function HomePage(){
          }
         },
         {
-         name: "company",
-         label: "Company",
-         options: {
-          filter: true,
-          sort: false,
-         }
-        },
+          name: "style",
+          label: "Style",
+          options: {
+           filter: true,
+           sort: false,
+          }
+         },
+         {
+          name: "ibu",
+          label: "IBU",
+          options: {
+           filter: true,
+           sort: false,
+          }
+         },
+         {
+          name: "abv",
+          label: "ABV",
+          options: {
+           filter: true,
+           sort: false,
+          }
+         },
         {
-         name: "city",
-         label: "City",
-         options: {
-          filter: true,
-          sort: false,
-         }
-        },
-        {
-         name: "state",
-         label: "State",
+         name: "rating",
+         label: "Rating",
          options: {
           filter: true,
           sort: false,
          }
         },
        ];
-       const data = [
-     { name: "Joe James", company: "Test Corp", city: "Yonkers", state: "NY" },
-     { name: "John Walsh", company: "Test Corp", city: "Hartford", state: "CT" },
-     { name: "Bob Herm", company: "Test Corp", city: "Tampa", state: "FL" },
-     { name: "James Houston", company: "Test Corp", city: "Dallas", state: "TX" },
-    ];
-    
-    const options = {
-        filterType: 'checkbox',
-      };
-
-
-    return(
+    return (
         <MUIDataTable
-  title={"Employee List"}
-  data={data}
-  columns={columns}
-    />
+          title={"Beers"}
+          data={beer.beers}
+          columns={columns} />
     );
-}
-
-const useStyles = makeStyles({
-    root: {
-
-    },
-})
+});

@@ -1,18 +1,13 @@
-import { api, POST } from "../constants/API";
 import { Credentials } from "../models/auth.model";
+import { SIGN_IN, SIGN_UP } from "./actions/authActions";
+import { api, POST } from "./store";
 
-export const SIGN_IN = "SIGN_IN";
-export const SIGN_UP = "SIGN_UP";
-export const SIGN_OUT = "SIGN_OUT";
-
-const initialState = {
+export function authReducer(state = {
     email: null,
     token: null,
     refreshToken: null,
     exp: null,
-};
-
-function authReducer(state = initialState, action: any) {
+}, action: any) {
     switch (action.type) {
         case SIGN_IN: {
             const updatedState = {
@@ -26,10 +21,8 @@ function authReducer(state = initialState, action: any) {
     }
 };
 
-export default authReducer;
-
 export async function signIn(credentials: Credentials) {
-    const response = await api(`/auth/login`, POST, credentials);
+    const response = await api(`/auth/login`, POST, undefined, credentials);
     const payload = {
         email: credentials.email,
         token: response.jwtToken,
@@ -44,6 +37,6 @@ export function signUp(payload: any) {
 };
 
 export function signOut(payload: any) {
-    return { type: SIGN_OUT, payload }
+    return { type: SIGN_UP, payload }
 };
 

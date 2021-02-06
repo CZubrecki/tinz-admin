@@ -5,12 +5,11 @@ import { Redirect, Route } from "react-router-dom";
 import { StoreState } from "../redux/store";
 
 const mapStateToProps = (state: StoreState) => ({
-  token: state.token,
-  exp: state.exp,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps)(function ProtectedRoute(props: any) {    
-  const { token, exp} = props;
+  const { token, exp } = props.auth;
   const now = Date.now();
 
   if(exp > now) {

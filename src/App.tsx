@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,11 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
-const mapStateToProps = (state: any) => {
-  return { auth: state.auth };
-};
-
-export default connect(mapStateToProps)(function App() {
+export default function App() {
   return (
     <Router>
       <Switch>
@@ -28,4 +23,4 @@ export default connect(mapStateToProps)(function App() {
       </Switch>
     </Router>
   );
-});
+};

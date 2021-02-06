@@ -29,7 +29,7 @@ export default function LoginPage(){
                 history.replace(value.from);
             }
         } catch (err) {
-            console.log('SHIT');
+            setLoading(false);
         }
     }
 
