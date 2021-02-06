@@ -6,7 +6,6 @@ export function beerReducer(state = {
 }, action: any) {
     switch (action.type) {
         case GET_BEERS: {
-            console.log(action.payload);
             return {
                 ...state,
                 beers: action.payload,
