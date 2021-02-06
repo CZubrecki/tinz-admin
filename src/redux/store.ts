@@ -1,5 +1,6 @@
 import { createStore } from "redux";
-import { persistCombineReducers } from 'redux-persist';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistCombineReducers, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from "./auth";
 import { beerReducer } from "./beers";
@@ -16,8 +17,8 @@ const reducers = {
 };
 
 const reducer = persistCombineReducers(persistConfig, reducers);
-const store = createStore(reducer);
-export default store;
+export const store = createStore(reducer, composeWithDevTools());
+export const persistor = persistStore(store)
 export type StoreState = ReturnType<typeof store['getState']>;
 
 const API_URL = 'http://localhost:8080';

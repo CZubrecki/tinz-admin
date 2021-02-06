@@ -16,9 +16,9 @@ export default function App() {
             <LoginPage />
         </Route>
         <ProtectedRoute render={() => (
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-          </Switch>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+            </Switch>
         )} />
       </Switch>
     </Router>
