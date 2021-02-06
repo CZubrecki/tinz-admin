@@ -53,6 +53,9 @@ export default connect(mapStateToProps)(function HomePage(props: any){
           options: {
            filter: true,
            sort: false,
+           customBodyRender: (value: any) => {
+             return value+'%'
+           }
           }
          },
         {
