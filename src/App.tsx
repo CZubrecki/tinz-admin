@@ -5,7 +5,9 @@ import {
   Switch
 } from "react-router-dom";
 import ProtectedRoute from './components/ProtectedRoute';
-import HomePage from './pages/HomePage';
+import BeersPage from './pages/Beer/BeersPage';
+import BreweriesPage from './pages/Brewery/BreweriesPage';
+import BreweryPage from './pages/Brewery/BreweryPage';
 import LoginPage from './pages/LoginPage';
 
 export default function App() {
@@ -17,7 +19,9 @@ export default function App() {
         </Route>
         <ProtectedRoute render={() => (
             <Switch>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/beers" component={BeersPage} />
+              <Route exact path="/breweries" component={BreweriesPage} />
+              <Route path="/brewery/:id" component={BreweryPage} />
             </Switch>
         )} />
       </Switch>

@@ -4,6 +4,7 @@ import { persistCombineReducers, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from "./auth";
 import { beerReducer } from "./beers";
+import { breweryReducer } from "./breweries";
 
 const persistConfig = {
     key: 'root',
@@ -13,7 +14,8 @@ const persistConfig = {
 
 const reducers = {
     auth: authReducer,
-    beer: beerReducer,
+    beers: beerReducer,
+    breweries: breweryReducer,
 };
 
 const reducer = persistCombineReducers(persistConfig, reducers);

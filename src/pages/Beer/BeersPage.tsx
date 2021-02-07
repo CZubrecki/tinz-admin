@@ -1,26 +1,25 @@
-import MUIDataTable from "mui-datatables";
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { fetchBeers } from "../redux/beers";
-import { StoreState } from "../redux/store";
+import DataTable from "../../components/DataTable";
+import { fetchBeers } from "../../redux/beers";
+import { StoreState } from "../../redux/store";
 
 const mapStateToProps = (state: StoreState) => ({
   auth: state.auth,
-  beer: state.beer,
+  beers: state.beers,
 });
 
-export default connect(mapStateToProps)(function HomePage(props: any){
+export default connect(mapStateToProps)(function BeersPage(props: any){
   const dispatch = useDispatch();
-  const {auth, beer} = props;
-
-  const loadBeer = async () => {
-    const result = await fetchBeers(auth.token);
-    dispatch(result);
-  }
+  const {auth, beers} = props;
   
   useEffect(() => {
-      loadBeer();
-  }, []);
+    async function fetchData() {
+      const result = await fetchBeers(auth.token);
+      dispatch(result);
+    }
+    fetchData();
+  }, [auth.token, dispatch]);
 
     const columns = [
         {
@@ -67,10 +66,5 @@ export default connect(mapStateToProps)(function HomePage(props: any){
          }
         },
        ];
-    return (
-        <MUIDataTable
-          title={"Beers"}
-          data={beer.beers}
-          columns={columns} />
-    );
+    return <DataTable title={"Beers"} data={beers.beers} columns={columns}/>
 });
