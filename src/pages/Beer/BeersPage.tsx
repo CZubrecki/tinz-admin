@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import AddBeerDialog from '../../components/Beer/AddBeerDialog';
 import DataTable from "../../components/DataTable";
-import { fetchBeers } from "../../redux/reducers/beers";
+import { fetchBeersAndBreweries } from "../../redux/reducers/beers";
 import { StoreState } from "../../redux/store";
 
 const mapStateToProps = (state: StoreState) => ({
@@ -20,7 +20,7 @@ export default connect(mapStateToProps)(function BeersPage(props: any){
 
   const fetchData = useCallback(
     async () => {
-      const result = await fetchBeers(auth.token);
+      const result = await fetchBeersAndBreweries(auth.token);
       dispatch(result);
     },
     [auth.token, dispatch],
