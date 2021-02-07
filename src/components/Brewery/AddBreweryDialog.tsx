@@ -23,9 +23,8 @@ const mapStateToProps = (state: StoreState) => ({
     auth: state.auth,
 });
 
-export default connect(mapStateToProps)(function AddBreweryDialog(props: AddBreweryDialogProps){
+export default connect(mapStateToProps)(function AddBreweryDialog({ auth, handleClose }: AddBreweryDialogProps){
     const dispatch = useDispatch();
-    const { auth, handleClose } = props;
     const [name, setName] = useState<string>('');
     const [country, setCountry] = useState<string>('');
 
@@ -46,7 +45,7 @@ export default connect(mapStateToProps)(function AddBreweryDialog(props: AddBrew
             <DialogTitle>Add Brewery</DialogTitle>
             <DialogContent>
                 <form>
-                    <FormControl fullWidth={true}>
+                    <FormControl fullWidth={true} size={'medium'} margin={'normal'}>
                         <InputLabel>Name:</InputLabel>
                         <Input onChange={(event) => setName(event.target.value)} />
                         <FormHelperText>Name of the brewery</FormHelperText>

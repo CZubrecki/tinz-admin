@@ -16,8 +16,8 @@ export interface CreateBeer {
     name: string;
     style: string;
     substyle?: string;
-    abv: number;
-    ibu: number;
+    abv: string;
+    ibu: string;
     description?: string;
     image: any;
 }
