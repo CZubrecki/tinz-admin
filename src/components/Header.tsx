@@ -19,7 +19,7 @@ export default function Header() {
             <AppBar position="static">
                 <Toolbar>
                     <div className={classes.navigation}>
-                      <Button color="inherit" onClick={() => handleClick('breweries')}>Breweries</Button>
+                      <Button color="inherit" onClick={() => handleClick('')}>Breweries</Button>
                       <Button color="inherit" onClick={() => handleClick('beers')}>Beers</Button>
                     </div>
                     <Button color="inherit" onClick={() => logout()}>Sign Out</Button>

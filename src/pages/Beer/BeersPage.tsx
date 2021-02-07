@@ -23,6 +23,13 @@ export default connect(mapStateToProps)(function BeersPage(props: any){
 
     const columns = [
         {
+          name: 'id',
+          label: '',
+          options: {
+              display: false,
+          }
+        },
+        {
          name: "name",
          label: "Name",
          options: {
