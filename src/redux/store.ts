@@ -2,9 +2,9 @@ import { createStore } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistCombineReducers, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authReducer } from "./auth";
-import { beerReducer } from "./beers";
-import { breweryReducer } from "./breweries";
+import { authReducer } from "./reducers/auth";
+import { beerReducer } from "./reducers/beers";
+import { breweryReducer } from "./reducers/breweries";
 
 const persistConfig = {
     key: 'root',

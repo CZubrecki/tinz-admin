@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Credentials } from '../models/auth.model';
-import { signIn } from '../redux/auth';
+import { signIn } from '../redux/reducers/auth';
 
 export default function LoginPage(){
     const [email, setEmail] = useState<any>();

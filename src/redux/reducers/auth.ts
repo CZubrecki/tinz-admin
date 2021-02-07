@@ -1,6 +1,6 @@
-import { Credentials } from "../models/auth.model";
-import { SIGN_IN, SIGN_OUT } from "./actions/authActions";
-import { api, POST } from "./store";
+import { Credentials } from "../../models/auth.model";
+import { SIGN_IN, SIGN_OUT } from "../actions/authActions";
+import { api, POST } from "../store";
 
 export function authReducer(state = {
     email: null,

@@ -1,6 +1,6 @@
-import { CreateBrewery, UpdateBrewery } from "../models/brewery.model";
-import { CREATE_BREWERY, FETCH_BREWERIES, FETCH_BREWERY, UPDATE_BREWERY } from "./actions/breweryActions";
-import { api, GET, POST, PUT } from "./store";
+import { CreateBrewery, UpdateBrewery } from "../../models/brewery.model";
+import { CREATE_BREWERY, FETCH_BREWERIES, FETCH_BREWERY, UPDATE_BREWERY } from "../actions/breweryActions";
+import { api, GET, POST, PUT } from "../store";
 
 export function breweryReducer(state = {
     breweries: [],

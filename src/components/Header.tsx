@@ -2,7 +2,7 @@ import { AppBar, Button, createStyles, makeStyles, Theme, Toolbar } from '@mater
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { signOut } from '../redux/auth';
+import { signOut } from '../redux/reducers/auth';
 
 export default function Header() {
     const classes = useStyles();

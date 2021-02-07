@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import DataTable from '../../components/DataTable';
-import { fetchBreweries } from '../../redux/breweries';
+import { fetchBreweries } from '../../redux/reducers/breweries';
 import { StoreState } from '../../redux/store';
 
 const mapStateToProps = (state: StoreState) => ({
