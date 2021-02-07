@@ -5,8 +5,7 @@ export default function BreweryPage(props: any) {
     const { id } = match.params;
 
     return(
-        <div>
-            {id}
-        </div>
+        <>
+        </>
     );
 }

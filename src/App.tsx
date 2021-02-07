@@ -20,6 +20,7 @@ export default function App() {
         <ProtectedRoute render={() => (
             <Switch>
               <Route exact path="/beers" component={BeersPage} />
+              <Route path="/beer/:id" component={BeersPage} />
               <Route exact path="/breweries" component={BreweriesPage} />
               <Route path="/brewery/:id" component={BreweryPage} />
             </Switch>
