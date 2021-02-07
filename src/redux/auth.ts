@@ -1,5 +1,5 @@
 import { Credentials } from "../models/auth.model";
-import { SIGN_IN, SIGN_OUT, SIGN_UP } from "./actions/authActions";
+import { SIGN_IN, SIGN_OUT } from "./actions/authActions";
 import { api, POST } from "./store";
 
 export function authReducer(state = {
@@ -38,10 +38,6 @@ export async function signIn(credentials: Credentials) {
         refreshToken: null,
     }
     return { type: SIGN_IN, payload };
-};
-
-export function signUp(payload: any) {
-    return { type: SIGN_UP, payload };
 };
 
 export function signOut(payload: any) {
