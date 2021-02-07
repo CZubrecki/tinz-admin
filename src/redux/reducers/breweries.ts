@@ -39,6 +39,7 @@ export async function fetchBrewery(token: string, id: string) {
 
 export async function createBrewery(token: string, brewery: CreateBrewery) {
     const response = await api(`/brewery`, POST, token, brewery);
+    console.log(response);
     return { type: CREATE_BREWERY, payload: response };
 }
 

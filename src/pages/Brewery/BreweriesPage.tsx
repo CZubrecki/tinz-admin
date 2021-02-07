@@ -1,5 +1,9 @@
-import React, { useEffect } from 'react';
+import { Button, Dialog, makeStyles } from '@material-ui/core';
+import { createStyles, Theme } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import React, { useCallback, useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
+import AddBreweryDialog from '../../components/Brewery/AddBreweryDialog';
 import DataTable from '../../components/DataTable';
 import { fetchBreweries } from '../../redux/reducers/breweries';
 import { StoreState } from '../../redux/store';
@@ -7,19 +11,31 @@ import { StoreState } from '../../redux/store';
 const mapStateToProps = (state: StoreState) => ({
     auth: state.auth,
     breweries: state.breweries,
-  });
+});
 
 export default connect(mapStateToProps)(function BreweriesPage(props: any) {
-    const { auth, breweries } = props;
+    const classes = useStyles();
     const dispatch = useDispatch();
+    const { auth, breweries } = props;
+    const [dialogVisible, setDialogVisible] = useState<boolean>(false);
 
-    useEffect(() => {
-        async function fetchData() {
+    const fetchData = useCallback(
+        async () => {
             const result = await fetchBreweries(auth.token);
             dispatch(result);
-          }
-          fetchData();
-    }, [auth.token, dispatch]);
+        },
+        [auth.token, dispatch],
+      );
+
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
+
+    const handleClose = async () => {
+        fetchData();
+        setDialogVisible(false);
+    }
+
 
     const columns = [
         {
@@ -27,6 +43,8 @@ export default connect(mapStateToProps)(function BreweriesPage(props: any) {
             label: '',
             options: {
                 display: false,
+                filter: false,
+                sort: false,
             }
         },
         {
@@ -35,6 +53,7 @@ export default connect(mapStateToProps)(function BreweriesPage(props: any) {
             options: {
                 filter: true,
                 sort: true,
+                sortDescFirst: true,
             }
         },
         {
@@ -48,6 +67,23 @@ export default connect(mapStateToProps)(function BreweriesPage(props: any) {
     ];
 
     return(
-        <DataTable title={"Breweries"} data={breweries.breweries} columns={columns}/>
+        <>
+            <Toolbar>
+                <div className={classes.toolbar} />
+                <Button color="primary" variant="outlined" onClick={() => setDialogVisible(true)}>Add</Button>
+            </Toolbar>
+            <Dialog open={dialogVisible} onClose={handleClose} maxWidth={'sm'} fullWidth={true}>
+                <AddBreweryDialog handleClose={handleClose} />
+            </Dialog>
+            <DataTable title={'Breweries'} redirectPath={'brewery'} data={breweries.breweries} columns={columns}/>
+        </>
     );
 });
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    toolbar: {
+      flexGrow: 1,
+    },
+  }),
+);

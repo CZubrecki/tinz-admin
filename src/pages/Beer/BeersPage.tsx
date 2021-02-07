@@ -73,5 +73,5 @@ export default connect(mapStateToProps)(function BeersPage(props: any){
          }
         },
        ];
-    return <DataTable title={"Beers"} data={beers.beers} columns={columns}/>
+    return <DataTable title={'Beers'} redirectPath={'beer'} data={beers.beers} columns={columns}/>
 });
