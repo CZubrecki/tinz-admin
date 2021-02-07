@@ -26,8 +26,8 @@ export function beerReducer(state = {
     }
 };
 
-export async function fetchBeers(token: string) {
-    const payload = await api(`/beer`, GET, token);
+export async function fetchBeersAndBreweries(token: string) {
+    const payload = await api(`/beer/beers-and-breweries`, GET, token);
     return { type: FETCH_BEERS, payload };
 }
 

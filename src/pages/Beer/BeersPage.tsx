@@ -44,6 +44,15 @@ export default connect(mapStateToProps)(function BeersPage(props: any){
           }
         },
         {
+          name: "brewery",
+          label: "Brewery",
+          options: {
+           filter: true,
+           sort: true,
+           customBodyRender: (brewery: any) => brewery.name
+          }
+         },
+        {
          name: "name",
          label: "Name",
          options: {
@@ -73,9 +82,7 @@ export default connect(mapStateToProps)(function BeersPage(props: any){
           options: {
            filter: true,
            sort: false,
-           customBodyRender: (value: any) => {
-             return value+'%'
-           }
+           customBodyRender: (abv: any) => abv+'%'
           }
          },
         {
