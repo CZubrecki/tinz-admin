@@ -39,10 +39,16 @@ export default function LoginPage(){
 
     return(
         <div className={classes.root}>
-            <form>
-                <TextField id="outlined-email-input" label="Email" type="email" autoComplete="current-email" variant="outlined" onChange={event => setEmail(event.target.value)} />
-                <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password" variant="outlined" onChange={event => setPassword(event.target.value)} />
-                <Button onClick={login}>Log In</Button>
+            <form className={classes.form}>
+                <div className={classes.input}>
+                    <TextField id="outlined-email-input" label="Email" type="email" autoComplete="current-email" variant="outlined" onChange={event => setEmail(event.target.value)} />
+                </div>
+                <div className={classes.input}>
+                    <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password" variant="outlined" onChange={event => setPassword(event.target.value)} />
+                </div>
+                <div className={classes.button}>
+                    <Button onClick={login} variant="contained" color="primary">Log In</Button>
+                </div>
             </form>
         </div>
     );
@@ -50,5 +56,19 @@ export default function LoginPage(){
 
 const useStyles = makeStyles({
     root: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
+    form: {
+        marginTop: '25%',
+    },
+    input: {
+        margin: 10,
+    },
+    button: {
+        padding: 20,
+        display: 'flex',
+        justifyContent: 'center',
+    }
   });
