@@ -25,14 +25,14 @@ const mapStateToProps = (state: StoreState) => ({
 });
 
 
-export default connect(mapStateToProps)(function AddBeerDialog({auth, handleClose}: AddBeerDialogProps) {
+export default connect(mapStateToProps)(function AddBeerDialog({ auth, handleClose }: AddBeerDialogProps) {
     const classes = useStyles();
     const dispatch = useDispatch();
     const [name, setName] = useState<string>('');
     const [breweryId, setBreweryId] = useState<string>('');
     const [style, setStyle] = useState<string>('');
     const [abv, setABV] = useState<string>('');
-    const [ibu, setIBU] = useState<string>(''); 
+    const [ibu, setIBU] = useState<string>('');
     const [description, setDescription] = useState<string | undefined>(undefined);
 
     const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +54,7 @@ export default connect(mapStateToProps)(function AddBeerDialog({auth, handleClos
         handleClose();
     }
 
-    return(
+    return (
         <>
             <DialogTitle>Add Beer</DialogTitle>
             <DialogContent>
@@ -65,7 +65,7 @@ export default connect(mapStateToProps)(function AddBeerDialog({auth, handleClos
                         <FormHelperText>Name of beer</FormHelperText>
                     </FormControl>
 
-                    <BrewerySelector handleChange={(brewery: string) => setBreweryId(brewery)}/>
+                    <BrewerySelector handleChange={(brewery: string) => setBreweryId(brewery)} />
 
                     <StyleSelector handleChange={(style: string) => setStyle(style)} />
 
@@ -97,7 +97,7 @@ export default connect(mapStateToProps)(function AddBeerDialog({auth, handleClos
                             <Button variant="contained" color="primary" component="span">Upload Image</Button>
                         </label>
                     </FormControl>
-                </form> 
+                </form>
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">
@@ -112,9 +112,9 @@ export default connect(mapStateToProps)(function AddBeerDialog({auth, handleClos
 });
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    input: {
-        display: 'none',
-    },
-  }),
+    createStyles({
+        input: {
+            display: 'none',
+        },
+    }),
 );

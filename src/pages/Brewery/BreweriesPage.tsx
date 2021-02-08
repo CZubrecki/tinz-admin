@@ -25,7 +25,7 @@ export default connect(mapStateToProps)(function BreweriesPage(props: any) {
             dispatch(result);
         },
         [auth.token, dispatch],
-      );
+    );
 
     useEffect(() => {
         fetchData();
@@ -66,7 +66,7 @@ export default connect(mapStateToProps)(function BreweriesPage(props: any) {
         },
     ];
 
-    return(
+    return (
         <>
             <Toolbar>
                 <div className={classes.toolbar} />
@@ -75,15 +75,15 @@ export default connect(mapStateToProps)(function BreweriesPage(props: any) {
             <Dialog open={dialogVisible} onClose={handleClose} maxWidth={'sm'} fullWidth={true}>
                 <AddBreweryDialog handleClose={handleClose} />
             </Dialog>
-            <DataTable title={'Breweries'} redirectPath={'brewery'} data={breweries.breweries} columns={columns}/>
+            <DataTable title={'Breweries'} redirectPath={'brewery'} data={breweries.breweries} columns={columns} />
         </>
     );
 });
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    toolbar: {
-      flexGrow: 1,
-    },
-  }),
+    createStyles({
+        toolbar: {
+            flexGrow: 1,
+        },
+    }),
 );

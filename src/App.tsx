@@ -16,15 +16,15 @@ export default function App() {
     <Router>
       <Switch>
         <Route path="/login">
-            <LoginPage />
+          <LoginPage />
         </Route>
         <ProtectedRoute render={() => (
-            <Switch>
-              <Route exact path="/beers" component={BeersPage} />
-              <Route path="/beer/:id" component={BeerPage} />
-              <Route exact path="/" component={BreweriesPage} />
-              <Route path="/brewery/:id" component={BreweryPage} />
-            </Switch>
+          <Switch>
+            <Route exact path="/beers" component={BeersPage} />
+            <Route path="/beer/:id" component={BeerPage} />
+            <Route exact path="/" component={BreweriesPage} />
+            <Route path="/brewery/:id" component={BreweryPage} />
+          </Switch>
         )} />
       </Switch>
     </Router>

@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { Credentials } from '../models/auth.model';
 import { signIn } from '../redux/reducers/auth';
 
-export default function LoginPage(){
+export default function LoginPage() {
     const [email, setEmail] = useState<any>();
     const [password, setPassword] = useState<any>('');
     const [loading, setLoading] = useState<boolean>(false);
@@ -25,7 +25,7 @@ export default function LoginPage(){
             setLoading(true);
             const result = await signIn(credentials);
             dispatch(result);
-            if(value && value.from){
+            if (value && value.from) {
                 history.replace(value.from);
             }
         } catch (err) {
@@ -33,11 +33,11 @@ export default function LoginPage(){
         }
     }
 
-    if(loading) {
-        return <CircularProgress/>
+    if (loading) {
+        return <CircularProgress />
     }
 
-    return(
+    return (
         <div className={classes.root}>
             <form className={classes.form}>
                 <div className={classes.input}>
@@ -71,4 +71,4 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'center',
     }
-  });
+});

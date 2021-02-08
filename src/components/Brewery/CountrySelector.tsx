@@ -10,12 +10,12 @@ interface CountrySelectorProps {
     handleChange: (value: string) => void
 }
 
-export default function CountrySelector({handleChange}: CountrySelectorProps) {
+export default function CountrySelector({ handleChange }: CountrySelectorProps) {
 
-    return(
+    return (
         <FormControl fullWidth={true} size={'medium'} margin={'normal'}>
             <InputLabel htmlFor="country">Country:</InputLabel>
-            <Select defaultValue={''} onChange={(event: any) => handleChange(event.target.value)} inputProps={{ name: 'country', id: 'country'}}>
+            <Select defaultValue={''} onChange={(event: any) => handleChange(event.target.value)} inputProps={{ name: 'country', id: 'country' }}>
                 {Countries.map((value: string, key: number) => (
                     <MenuItem key={key} value={value && value}>{value}</MenuItem>
                 ))}

@@ -23,13 +23,13 @@ const mapStateToProps = (state: StoreState) => ({
     auth: state.auth,
 });
 
-export default connect(mapStateToProps)(function AddBreweryDialog({ auth, handleClose }: AddBreweryDialogProps){
+export default connect(mapStateToProps)(function AddBreweryDialog({ auth, handleClose }: AddBreweryDialogProps) {
     const dispatch = useDispatch();
     const [name, setName] = useState<string>('');
     const [country, setCountry] = useState<string>('');
 
     const handleAdd = async () => {
-        if(name && country) {
+        if (name && country) {
             const brewery: CreateBrewery = {
                 name,
                 country
@@ -39,8 +39,8 @@ export default connect(mapStateToProps)(function AddBreweryDialog({ auth, handle
             handleClose();
         }
     }
-    
-    return(
+
+    return (
         <>
             <DialogTitle>Add Brewery</DialogTitle>
             <DialogContent>
@@ -51,7 +51,7 @@ export default connect(mapStateToProps)(function AddBreweryDialog({ auth, handle
                         <FormHelperText>Name of the brewery</FormHelperText>
                     </FormControl>
                     <CountrySelector handleChange={(country: string) => setCountry(country)} />
-                </form>   
+                </form>
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">

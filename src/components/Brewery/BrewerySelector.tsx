@@ -16,10 +16,10 @@ const mapStateToProps = (state: StoreState) => ({
 });
 
 export default connect(mapStateToProps)(function BrewerySelector({ handleChange, breweries }: BrewerySelectorProps) {
-    return(
+    return (
         <FormControl fullWidth={true} size={'medium'} margin={'normal'} required>
             <InputLabel htmlFor="brewery">Brewery:</InputLabel>
-            <Select defaultValue={''} onChange={(event: any) => handleChange(event.target.value)} inputProps={{ name: 'brewery', id: 'brewery'}}>
+            <Select defaultValue={''} onChange={(event: any) => handleChange(event.target.value)} inputProps={{ name: 'brewery', id: 'brewery' }}>
                 {breweries.map((brewery: any) => (
                     <MenuItem key={brewery.id} value={brewery.id}>{brewery.name}</MenuItem>
                 ))}

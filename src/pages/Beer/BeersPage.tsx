@@ -12,10 +12,10 @@ const mapStateToProps = (state: StoreState) => ({
   beers: state.beers,
 });
 
-export default connect(mapStateToProps)(function BeersPage(props: any){
+export default connect(mapStateToProps)(function BeersPage(props: any) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const {auth, beers} = props;
+  const { auth, beers } = props;
   const [dialogVisible, setDialogVisible] = useState<boolean>(false);
 
   const fetchData = useCallback(
@@ -25,87 +25,87 @@ export default connect(mapStateToProps)(function BeersPage(props: any){
     },
     [auth.token, dispatch],
   );
-  
+
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
   const handleClose = () => {
     fetchData();
-    setDialogVisible(false); 
+    setDialogVisible(false);
   }
 
-    const columns = [
-        {
-          name: 'id',
-          label: '',
-          options: {
-              display: false,
-          }
-        },
-        {
-          name: "brewery",
-          label: "Brewery",
-          options: {
-           filter: true,
-           sort: true,
-           customBodyRender: (brewery: any) => brewery.name
-          }
-         },
-        {
-         name: "name",
-         label: "Name",
-         options: {
-          filter: true,
-          sort: true,
-         }
-        },
-        {
-          name: "style",
-          label: "Style",
-          options: {
-           filter: true,
-           sort: false,
-          }
-         },
-         {
-          name: "ibu",
-          label: "IBU",
-          options: {
-           filter: true,
-           sort: false,
-          }
-         },
-         {
-          name: "abv",
-          label: "ABV",
-          options: {
-           filter: true,
-           sort: false,
-           customBodyRender: (abv: any) => abv+'%'
-          }
-         },
-        {
-         name: "rating",
-         label: "Rating",
-         options: {
-          filter: true,
-          sort: false,
-         }
-        },
-       ];
-    return (
-      <>
-        <Toolbar>
-                <div className={classes.toolbar} />
-                <Button color="primary" variant="outlined" onClick={() => setDialogVisible(true)}>Add</Button>
-        </Toolbar>
-        <Dialog open={dialogVisible} onClose={handleClose} maxWidth={'sm'} fullWidth={true}>
-                <AddBeerDialog handleClose={handleClose} />
-        </Dialog>
-        <DataTable title={'Beers'} redirectPath={'beer'} data={beers.beers} columns={columns}/>
-      </>
-    )
+  const columns = [
+    {
+      name: 'id',
+      label: '',
+      options: {
+        display: false,
+      }
+    },
+    {
+      name: "brewery",
+      label: "Brewery",
+      options: {
+        filter: true,
+        sort: true,
+        customBodyRender: (brewery: any) => brewery.name
+      }
+    },
+    {
+      name: "name",
+      label: "Name",
+      options: {
+        filter: true,
+        sort: true,
+      }
+    },
+    {
+      name: "style",
+      label: "Style",
+      options: {
+        filter: true,
+        sort: false,
+      }
+    },
+    {
+      name: "ibu",
+      label: "IBU",
+      options: {
+        filter: true,
+        sort: false,
+      }
+    },
+    {
+      name: "abv",
+      label: "ABV",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (abv: any) => abv + '%'
+      }
+    },
+    {
+      name: "rating",
+      label: "Rating",
+      options: {
+        filter: true,
+        sort: false,
+      }
+    },
+  ];
+  return (
+    <>
+      <Toolbar>
+        <div className={classes.toolbar} />
+        <Button color="primary" variant="outlined" onClick={() => setDialogVisible(true)}>Add</Button>
+      </Toolbar>
+      <Dialog open={dialogVisible} onClose={handleClose} maxWidth={'sm'} fullWidth={true}>
+        <AddBeerDialog handleClose={handleClose} />
+      </Dialog>
+      <DataTable title={'Beers'} redirectPath={'beer'} data={beers.beers} columns={columns} />
+    </>
+  )
 });
 
 const useStyles = makeStyles((theme: Theme) =>

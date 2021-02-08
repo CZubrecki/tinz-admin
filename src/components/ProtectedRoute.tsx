@@ -8,11 +8,11 @@ const mapStateToProps = (state: StoreState) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(function ProtectedRoute(props: any) {    
+export default connect(mapStateToProps)(function ProtectedRoute(props: any) {
   const { token, exp } = props.auth;
   const now = Date.now();
 
-  if(now > (exp*1000) || !token) {
+  if (now > (exp * 1000) || !token) {
     return <Redirect to={`/login`} />;
   }
 

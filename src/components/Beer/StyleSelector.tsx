@@ -9,11 +9,11 @@ interface StyleSelectorProps {
     handleChange: (value: string) => void
 }
 
-export default function StyleSelector({handleChange}: StyleSelectorProps) {
-    return(
+export default function StyleSelector({ handleChange }: StyleSelectorProps) {
+    return (
         <FormControl fullWidth={true} size={'medium'} margin={'normal'}>
             <InputLabel htmlFor="style">Style:</InputLabel>
-            <Select defaultValue={''} onChange={(event: any) => handleChange(event.target.value)} inputProps={{ name: 'style', id: 'style'}}>
+            <Select defaultValue={''} onChange={(event: any) => handleChange(event.target.value)} inputProps={{ name: 'style', id: 'style' }}>
                 {Styles.map((value: string, key: number) => (
                     <MenuItem key={key} value={value && value}>{value}</MenuItem>
                 ))}
